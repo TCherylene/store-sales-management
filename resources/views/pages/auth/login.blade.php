@@ -48,31 +48,30 @@
                 <div class="z-1 flex items-center justify-center">
                     <div class="flex max-w-xs items-center gap-3">
                         <p class="text-white font-semibold text-4xl">
-                            {{ env('APP_NAME', 'Store Sales Management') }}
+                            {{ env('APP_NAME', 'Sales Management') }}
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @push('scripts')
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                console.log(window.$);
-                $(".password-icon").on("click", function () {
-                    const input = $("#password_field").find('input');
-                    const type = $(input).attr('type');
-                    if (type == "password") {
-                        $(input).attr('type', 'text');
-                        $(this).addClass('fa-eye-slash');
-                        $(this).removeClass('fa-eye');
-                    } else {
-                        $(input).attr('type', 'password');
-                        $(this).addClass('fa-eye');
-                        $(this).removeClass('fa-eye-slash');
-                    }
-                })
-            });
-        </script>
-    @endpush
 </x-app-layout>
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $(".password-icon").on("click", function () {
+                const input = $("#password_field").find('input');
+                const type = $(input).attr('type');
+                if (type == "password") {
+                    $(input).attr('type', 'text');
+                    $(this).addClass('fa-eye-slash');
+                    $(this).removeClass('fa-eye');
+                } else {
+                    $(input).attr('type', 'password');
+                    $(this).addClass('fa-eye');
+                    $(this).removeClass('fa-eye-slash');
+                }
+            })
+        });
+    </script>
+@endpush

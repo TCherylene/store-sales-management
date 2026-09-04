@@ -1,2 +1,5 @@
-import $ from 'jquery';
-window.$ = window.jQuery = $;
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        document.getElementById('page-loader')?.remove();
+    }, 350);
+});

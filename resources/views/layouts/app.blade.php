@@ -7,12 +7,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $title ?? 'Dashboard' }} | {{ env('APP_NAME', 'Store Management')}}</title>
-    @vite(['resources/css/app.css'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
-<body>
-    {{ $slot }}
-    @vite(['resources/js/app.js'])
+<body class="h-screen">
+    <main>
+        {{ $slot }}
+    </main>
     @stack('scripts')
 </body>
 

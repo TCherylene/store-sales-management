@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "@fortawesome/fontawesome-free/css/all.css";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -52,7 +52,7 @@
     --color-brand-800: #0e2146;
     --color-brand-900: #0a1834;
     --color-brand-950: #060f22;
-    --color-brand-primary: #2E456D;
+    --color-brand-primary: #2e456d;
 
     --color-blue-light-25: #f5fbff;
     --color-blue-light-50: #f0f9ff;
@@ -137,28 +137,37 @@
 
     --color-theme-purple-500: #7a5af8;
 
-      --color-primary: #17366e;
-      --color-secondary: #06a3da;
-      --color-success: #28a745;
-      --color-info: #17a2b8;
-      --color-warning: #ffc107;
-      --color-danger: #dc3545;
+    --color-primary: #17366e;
+    --color-secondary: #06a3da;
+    --color-success: #28a745;
+    --color-info: #17a2b8;
+    --color-warning: #ffc107;
+    --color-danger: #dc3545;
 
-    --shadow-theme-md: 0px 4px 8px -2px rgba(16, 24, 40, 0.1), 0px 2px 4px -2px rgba(16, 24, 40, 0.06);
-    --shadow-theme-lg: 0px 12px 16px -4px rgba(16, 24, 40, 0.08),
-      0px 4px 6px -2px rgba(16, 24, 40, 0.03);
-    --shadow-theme-sm: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+    --shadow-theme-md:
+        0px 4px 8px -2px rgba(16, 24, 40, 0.1),
+        0px 2px 4px -2px rgba(16, 24, 40, 0.06);
+    --shadow-theme-lg:
+        0px 12px 16px -4px rgba(16, 24, 40, 0.08),
+        0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+    --shadow-theme-sm:
+        0px 1px 3px 0px rgba(16, 24, 40, 0.1),
+        0px 1px 2px 0px rgba(16, 24, 40, 0.06);
     --shadow-theme-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-    --shadow-theme-xl: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
-      0px 8px 8px -4px rgba(16, 24, 40, 0.03);
+    --shadow-theme-xl:
+        0px 20px 24px -4px rgba(16, 24, 40, 0.08),
+        0px 8px 8px -4px rgba(16, 24, 40, 0.03);
     --shadow-datepicker: -5px 0 0 #262d3c, 5px 0 0 #262d3c;
     --shadow-focus-ring: 0px 0px 0px 4px rgba(70, 95, 255, 0.12);
-    --shadow-slider-navigation: 0px 1px 2px 0px rgba(16, 24, 40, 0.1),
-      0px 1px 3px 0px rgba(16, 24, 40, 0.1);
-    --shadow-tooltip: 0px 4px 6px -2px rgba(16, 24, 40, 0.05),
-      -8px 0px 20px 8px rgba(16, 24, 40, 0.05);
+    --shadow-slider-navigation:
+        0px 1px 2px 0px rgba(16, 24, 40, 0.1),
+        0px 1px 3px 0px rgba(16, 24, 40, 0.1);
+    --shadow-tooltip:
+        0px 4px 6px -2px rgba(16, 24, 40, 0.05),
+        -8px 0px 20px 8px rgba(16, 24, 40, 0.05);
 
-    --drop-shadow-4xl: 0 35px 35px rgba(0, 0, 0, 0.25), 0 45px 65px rgba(0, 0, 0, 0.15);
+    --drop-shadow-4xl:
+        0 35px 35px rgba(0, 0, 0, 0.25), 0 45px 65px rgba(0, 0, 0, 0.15);
 
     --z-index-1: 1;
     --z-index-9: 9;
@@ -167,4 +176,128 @@
     --z-index-9999: 9999;
     --z-index-99999: 99999;
     --z-index-999999: 999999;
-  }
+}
+
+.sidebar:hover {
+    width: 290px;
+}
+.sidebar:hover .logo {
+    display: block;
+}
+.sidebar:hover .logo-icon {
+    display: none;
+}
+.sidebar:hover .sidebar-header {
+    justify-content: space-between;
+}
+.sidebar:hover .menu-group-title {
+    display: block;
+}
+.sidebar:hover .menu-group-icon {
+    display: none;
+}
+
+.sidebar:hover .menu-item-text {
+    display: inline;
+}
+
+.sidebar:hover .menu-item-arrow {
+    display: block;
+}
+
+.sidebar:hover .menu-dropdown {
+    display: flex;
+}
+
+@utility menu-item {
+    @apply relative flex items-center w-full gap-3 px-3 py-2 font-medium rounded-lg text-theme-sm;
+}
+
+@utility menu-item-active {
+    @apply bg-brand-50 text-brand-primary dark:bg-brand-500/[0.12] dark:text-brand-400;
+}
+
+@utility menu-item-inactive {
+    @apply text-gray-100 hover:bg-gray-100 hover:text-brand-primary group-hover:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300;
+}
+
+@utility menu-item-icon {
+    @apply text-gray-500 group-hover:text-gray-700 dark:text-gray-400;
+}
+
+@utility menu-item-icon-active {
+    @apply text-brand-primary dark:text-brand-300;
+}
+
+@utility menu-item-icon-inactive {
+    @apply text-gray-400 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300;
+}
+
+@utility menu-item-arrow {
+    @apply relative;
+}
+
+@utility menu-item-arrow-active {
+    @apply rotate-180 text-brand-primary dark:text-brand-400;
+}
+
+@utility menu-item-arrow-inactive {
+    @apply text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300;
+}
+
+@utility menu-dropdown-item {
+    @apply relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-theme-sm font-medium;
+}
+
+@utility menu-dropdown-item-active {
+    @apply bg-brand-50 text-brand-primary dark:bg-brand-500/[0.12] dark:text-brand-400;
+}
+
+@utility menu-dropdown-item-inactive {
+    @apply text-gray-100 hover:bg-gray-100 hover:text-brand-primary dark:text-gray-300 dark:hover:bg-white/5;
+}
+
+@utility menu-dropdown-item {
+    @apply text-theme-sm relative flex items-center gap-3 rounded-lg px-3 py-2.5 font-medium;
+}
+
+@utility menu-dropdown-item-active {
+    @apply bg-brand-50 text-brand-primary dark:bg-brand-500/[0.12] dark:text-brand-400;
+}
+
+@utility menu-dropdown-item-inactive {
+    @apply text-gray-100 hover:bg-gray-100 hover:text-brand-primary dark:text-gray-300 dark:hover:bg-white/5;
+}
+
+@utility menu-dropdown-badge {
+    @apply text-success-600 dark:text-success-500 block rounded-full px-2.5 py-0.5 text-xs font-medium uppercase;
+}
+
+@utility menu-dropdown-badge-active {
+    @apply bg-success-100 dark:bg-success-500/20;
+}
+
+@utility menu-dropdown-badge-inactive {
+    @apply bg-success-50 group-hover:bg-success-100 dark:bg-success-500/15 dark:group-hover:bg-success-500/20;
+}
+
+@utility menu-dropdown-badge-pro {
+    @apply text-brand-600 dark:text-brand-primary block rounded-full px-2.5 py-0.5 text-xs font-medium uppercase;
+}
+
+@utility menu-dropdown-badge-pro-active {
+    @apply bg-brand-100 dark:bg-brand-500/20;
+}
+
+@utility menu-dropdown-badge-pro-inactive {
+    @apply bg-brand-50 group-hover:bg-brand-100 dark:bg-brand-500/15 dark:group-hover:bg-brand-500/20;
+}
+
+@utility no-scrollbar {
+    /* Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
