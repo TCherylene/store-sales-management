@@ -24,7 +24,7 @@
                 rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800
                 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden {{ $class ?? "w-full" }}">
             @if (!empty($prompt))
-                <option value=" {{ NULL }}">
+                <option value="{{ NULL }}">
                     {{ $prompt }}
                 </option>
             @endif
@@ -35,14 +35,12 @@
             @endforeach
         </select>
     @else
-            <div class="relative {{ $class ?? "w-full" }}"">
-                <input type="{{ $type }}" name="{{ $name }}" placeholder="{{ $placeholder }}" @required($required)
+        <div class="relative {{ $class ?? "w-full" }}">
+            <input type="{{ $type }}" name="{{ $name }}" placeholder="{{ $placeholder }}" @required($required)
                 value="{{ $value }}" class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11
                     rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800
                     placeholder:text-gray-400 focus:ring-3 focus:outline-hidden w-full
-                    read-only:bg-gray-100 read-only:hover:cursor-not-allowed"
-                    {{ $attributes }}
-                    />
+                    read-only:bg-gray-100 read-only:hover:cursor-not-allowed" {{ $attributes }} />
             {{ $slot }}
         </div>
 
@@ -52,4 +50,10 @@
             </i>
         @endif
     @endif
+
+    @error($name)
+        <div class="text-sm text-red-500 mt-1">
+            {{ $message }}
+        </div>
+    @enderror
 </div>

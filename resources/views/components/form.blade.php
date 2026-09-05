@@ -9,7 +9,7 @@
 @php
 	$classes = '' . ($attributes->get('class') ?? '');
 	$formMethod = in_array(strtoupper($method), ['GET', 'POST']) ? strtoupper($method) : 'POST';
-	$with_confirmation = in_array($formMethod, ['POST', 'PUT']);
+	$with_confirmation = in_array($formMethod, ['POST', 'PUT', 'DELETE']);
 	$with_confirmation &= !$without_confirm;
 	$confirm_message = $confirm ?? 'Apakah anda yakin ingin melakukan perubahan data?';
 @endphp
