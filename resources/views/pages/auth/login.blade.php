@@ -1,4 +1,4 @@
-<x-app-layout layout="guest">
+<x-app-layout layout="guest" title="Sign In">
     <div class="relative z-1 bg-white p-6 sm:p-0">
         <div class="relative flex h-screen w-full flex-col justify-center sm:p-0 lg:flex-row">
             <!-- Form -->
@@ -58,20 +58,18 @@
 </x-app-layout>
 @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            $(".password-icon").on("click", function () {
-                const input = $("#password_field").find('input');
-                const type = $(input).attr('type');
-                if (type == "password") {
-                    $(input).attr('type', 'text');
-                    $(this).addClass('fa-eye-slash');
-                    $(this).removeClass('fa-eye');
-                } else {
-                    $(input).attr('type', 'password');
-                    $(this).addClass('fa-eye');
-                    $(this).removeClass('fa-eye-slash');
-                }
-            })
-        });
+        $(".password-icon").on("click", function () {
+            const input = $("#password_field").find('input');
+            const type = $(input).attr('type');
+            if (type == "password") {
+                $(input).attr('type', 'text');
+                $(this).addClass('fa-eye-slash');
+                $(this).removeClass('fa-eye');
+            } else {
+                $(input).attr('type', 'password');
+                $(this).addClass('fa-eye');
+                $(this).removeClass('fa-eye-slash');
+            }
+        })
     </script>
 @endpush
