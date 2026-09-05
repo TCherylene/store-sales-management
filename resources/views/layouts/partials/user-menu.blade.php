@@ -6,7 +6,7 @@ use App\Helpers\MenuHelper;
 <div id="user-dropdown-wrapper" class="relative">
     <!-- User Button -->
     <button id="user-dropdown-toggle" class="flex items-center text-gray-700 hover:cursor-pointer" type="button">
-        <span class="block mr-1 font-medium text-theme-sm">{{ Helper::get_user()->username }}</span>
+        <span class="block mr-1 font-medium text-theme-sm">{{ Helper::get_user()->name }}</span>
 
         <!-- Chevron Icon -->
         <svg id="user-dropdown-chevron" class="w-5 h-5 transition-transform duration-200" fill="none"
@@ -22,7 +22,7 @@ use App\Helpers\MenuHelper;
 
         <!-- User Info -->
         <div>
-            <span class="block font-medium text-gray-700 text-theme-sm">{{ Helper::get_user()->username }}</span>
+            <span class="block font-medium text-gray-700 text-theme-sm">{{ Helper::get_user()->name }}</span>
         </div>
 
         <!-- Menu Items -->

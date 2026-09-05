@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png')}}">
 
     <title>{{ $title ?? 'Dashboard' }} | {{ env('APP_NAME', 'Store Management')}}</title>
     @vite(['resources/css/app.css'])
@@ -20,11 +21,31 @@
 
         {{-- Main Content --}}
         <div id="main-content" class="flex-1 transition-all duration-300 ease-in-out">
-
             @include('layouts.partials.header')
-
             {{-- Page Content --}}
             <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+                @isset($breadcrumbs)
+                    <x-breadcrumb :title="$title" :items="$breadcrumbs" />
+                @endisset
+                @if (session('error'))
+                    <x-alert title="Error!" color="danger">
+                        {{ session('error') }}
+                    </x-alert>
+                @endif
+                @if (session('success'))
+                    <x-alert title="Berhasil!" color="success">
+                        {{ session('success') }}
+                    </x-alert>
+                @endif
+                @if ($errors->any())
+                    <x-alert title="Error!" color="danger">
+                        <ul class="mt-1 list-disc list-inside">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </x-alert>
+                @endif
                 {{ $slot }}
             </div>
 

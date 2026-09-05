@@ -9,10 +9,10 @@
     <div class="sidebar-logo-wrapper pt-5 pb-5 flex w-full">
         <a href="/" class="flex items-center gap-3">
             {{-- Expanded Light Logo --}}
-            <img class="sidebar-expanded-logo w-10 h-10 rounded-full" src="{{ asset('images/logo/logo.png') }}" alt="Logo" />
+            <img class="sidebar-expanded-logo w-10 h-10 rounded-full" src="{{ asset('images/logo.png') }}" alt="Logo" />
 
             {{-- Collapsed Logo --}}
-            <img class="sidebar-collapsed-logo w-10 h-10" src="{{ asset('images/logo/logo.png') }}" alt="Logo" />
+            <img class="sidebar-collapsed-logo w-10 h-10" src="{{ asset('images/logo.png') }}" alt="Logo" />
 
             {{-- App Name --}}
             <span class="sidebar-app-name text-lg font-semibold text-white whitespace-nowrap">
@@ -26,16 +26,12 @@
                 @foreach ($menuGroups as $groupIndex => $menuGroup)
                     <div class="sidebar-menu-group" data-group="{{ $groupIndex }}">
                         {{-- Group Title --}}
-                        <div class="sidebar-menu-group-title flex flex-column justify-between hover:cursor-pointer text-gray-200 mb-4 text-xs">
+                        <div class="sidebar-menu-group-title flex flex-column justify-between text-gray-200 mb-4 text-xs">
                             <h2 class="sidebar-group-title uppercase flex leading-[20px]">
                                 <span class="sidebar-group-title-text">
                                     {{ $menuGroup['title'] }}
                                 </span>
                             </h2>
-
-                            <button type="button">
-                                <i class="fa fa-angles-up sidebar-group-icon"></i>
-                            </button>
                         </div>
 
                         {{-- Menu --}}
@@ -75,9 +71,9 @@
                                             </ul>
                                         </div>
                                     @else
-                                        <a href="{{ route($item['path']) }}" class="menu-item group sidebar-menu-item" data-path="{{ $item['path'] }}">
+                                        <a href="{{ route($item['path']) }}" class="menu-item hover:menu-item-active group sidebar-menu-item" data-path="{{ $item['path'] }}">
                                             {{-- Icon --}}
-                                            <span class="sidebar-menu-icon menu-item-icon-inactive">
+                                            <span class="sidebar-menu-icon menu-item-icon-inactive hover:menu-item-icon-active">
                                                 <i class="fas fa-{{ $item['icon'] }}"></i>
                                             </span>
 
@@ -126,7 +122,7 @@
             };
 
             function isActive(path) {
-                return window.currentRouteName === path;
+                return "{{ Route::currentRouteName() }}" === path;
             }
 
             window.updateSidebar = function() {
@@ -242,18 +238,6 @@
                             'rotate-180 text-brand-500'
                         );
                 }
-            });
-
-            $('.sidebar-menu-group-title').on('click', function () {
-                const $title = $(this);
-                const $group =v$title.closest('.sidebar-menu-group');
-                const $items = $group.find('.sidebar-menu-group-items');
-                const $icon = $title.find('.sidebar-group-icon');
-                $items.stop(true, true).slideToggle(200);
-
-                $icon.toggleClass(
-                    'fa-angles-up fa-angles-down'
-                );
             });
 
             $('.sidebar-menu-item[data-path]').each(function () {
