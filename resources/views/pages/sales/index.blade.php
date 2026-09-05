@@ -2,6 +2,33 @@
 use App\Helpers\Helper;
 $breadcrumbs = [['label' => "Daftar Penjualan"]];
 $buttons = [
+    'import' => [
+        'label' => "Import",
+        'href' => route('sales.import'),
+        'route' => 'sales.import',
+        'icon' => 'upload',
+        'color' => 'info'
+    ],
+    'export_menu' => [
+        'type' => 'dropdown',
+        'label' => "Export",
+        'icon' => 'download',
+        'color' => 'success',
+        'items' => [
+            [
+                'label' => "Export PDF",
+                'href' => route('sales.export.pdf', $sales),
+                'route' => 'sales.export.pdf',
+                'icon' => 'file-pdf',
+            ],
+            [
+                'label' => "Export Excel",
+                'href' => route('sales.export.excel', $sales),
+                'route' => 'sales.export.excel',
+                'icon' => 'file-excel',
+            ],
+        ]
+    ],
     'create' => [
         'label' => "Buat Penjualan",
         'href' => route('sales.create'),

@@ -21,9 +21,16 @@ class Shop extends Model
         return $this->hasOne(ShopArea::class, 'kode_toko', 'kode_toko_baru');
     }
 
-    public function getAreaName(){
+    public function sales()
+    {
+        return $this->hasMany(Sales::class, 'kode_toko', 'kode_toko_baru');
+    }
+
+    public function getAreaName()
+    {
         return $this->areaSales?->area_sales;
     }
+
 
     public static function listAll()
     {
@@ -31,7 +38,7 @@ class Shop extends Model
             ->pluck('kode_toko_baru')
             ->unique()
             ->sort()
-            ->mapWithKeys(fn ($toko) => [$toko => $toko])
+            ->mapWithKeys(fn($toko) => [$toko => $toko])
             ->toArray();
     }
 }

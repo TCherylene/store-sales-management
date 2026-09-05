@@ -4,6 +4,33 @@ $title = "Daftar Toko";
 $breadcrumbs = [['label' => $title]];
 
 $buttons = [
+    'import' => [
+        'label' => "Import",
+        'href' => route('shop.import'),
+        'route' => 'shop.import',
+        'icon' => 'upload',
+        'color' => 'info'
+    ],
+    'export_menu' => [
+        'type' => 'dropdown',
+        'label' => "Export",
+        'icon' => 'download',
+        'color' => 'success',
+        'items' => [
+            [
+                'label' => "Export PDF",
+                'href' => route('shop.export.pdf', $shops),
+                'route' => 'shop.export.pdf',
+                'icon' => 'file-pdf',
+            ],
+            [
+                'label' => "Export Excel",
+                'href' => route('shop.export.excel', $shops),
+                'route' => 'shop.export.excel',
+                'icon' => 'file-excel',
+            ],
+        ]
+    ],
     'create' => [
         'label' => "Buat Toko",
         'href' => route('shop.create'),

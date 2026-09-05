@@ -3,6 +3,33 @@
 $breadcrumbs = [['label' => "Daftar Salesman"]];
 
 $buttons = [
+    'import' => [
+        'label' => "Import",
+        'href' => route('salesman.import'),
+        'route' => 'salesman.import',
+        'icon' => 'upload',
+        'color' => 'info'
+    ],
+    'export_menu' => [
+        'type' => 'dropdown',
+        'label' => "Export",
+        'icon' => 'download',
+        'color' => 'success',
+        'items' => [
+            [
+                'label' => "Export PDF",
+                'href' => route('salesman.export.pdf', $salesmen),
+                'route' => 'salesman.export.pdf',
+                'icon' => 'file-pdf',
+            ],
+            [
+                'label' => "Export Excel",
+                'href' => route('salesman.export.excel', $salesmen),
+                'route' => 'salesman.export.excel',
+                'icon' => 'file-excel',
+            ],
+        ]
+    ],
     'create' => [
         'label' => "Buat Salesman",
         'href' => route('salesman.create'),

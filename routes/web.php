@@ -45,6 +45,15 @@ Route::middleware('auth')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
             Route::post('/', 'store')->name('store');
+
+            Route::get('/export/excel', 'exportExcel')->name('export.excel');
+            Route::get('/export/pdf', 'exportPdf')->name('export.pdf');
+
+            Route::get('/import', 'importForm')->name('import');
+            Route::post('/import/preview', 'importPreview')->name('import.preview');
+            Route::post('/import/store', 'importStore')->name('import.store');
+            Route::get('/import/template', 'downloadTemplate')->name('import.template');
+
             Route::get('/{shop}/edit', 'edit')->name('edit');
             Route::get('/{shop}', 'show')->name('show');
             Route::put('/{shop}', 'update')->name('update');
@@ -58,6 +67,15 @@ Route::middleware('auth')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
             Route::post('/', 'store')->name('store');
+
+            Route::get('/export/excel', 'exportExcel')->name('export.excel');
+            Route::get('/export/pdf', 'exportPdf')->name('export.pdf');
+
+            Route::get('/import', 'importForm')->name('import');
+            Route::post('/import/preview', 'importPreview')->name('import.preview');
+            Route::post('/import/store', 'importStore')->name('import.store');
+            Route::get('/import/template', 'downloadTemplate')->name('import.template');
+
             Route::get('/{salesman}/edit', 'edit')->name('edit');
             Route::get('/{salesman}', 'show')->name('show');
             Route::put('/{salesman}', 'update')->name('update');
@@ -71,6 +89,15 @@ Route::middleware('auth')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
             Route::post('/', 'store')->name('store');
+
+            Route::get('/export/excel', 'exportExcel')->name('export.excel');
+            Route::get('/export/pdf', 'exportPdf')->name('export.pdf');
+
+            Route::get('/import', 'importForm')->name('import');
+            Route::post('/import/preview', 'importPreview')->name('import.preview');
+            Route::post('/import/store', 'importStore')->name('import.store');
+            Route::get('/import/template', 'downloadTemplate')->name('import.template');
+
             Route::get('/{sale}/edit', 'edit')->name('edit');
             Route::get('/{sale}', 'show')->name('show');
             Route::put('/{sale}', 'update')->name('update');

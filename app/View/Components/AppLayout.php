@@ -26,6 +26,7 @@ class AppLayout extends Component
 	{
 		return match ($this->layout) {
 			'guest' => view('layouts.app'),
+            'pdf' => view('layouts.pdf'),
 			default => view('layouts.main'),
 		};
 	}

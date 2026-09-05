@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SalesmanTemplateExport;
 use App\Models\Salesman;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests\Master\SalesmanRequest;
 use Illuminate\Support\Facades\DB;
+use App\Imports\SalesmanImport;
+use Illuminate\Support\Facades\Storage;
+use App\Exports\SalesmanExport;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SalesmanController extends Controller
 {
@@ -96,5 +102,86 @@ class SalesmanController extends Controller
         return redirect()
             ->route('salesman.index')
             ->with('success', "Berhasil menghapus salesman.");
+    }
+
+    public function importForm()
+    {
+        return view($this->buildPage('import'));
+    }
+
+    public function importPreview(Request $request)
+    {
+        $request->validate([
+            'file' => [
+                'required',
+                'file',
+                'mimes:xlsx,xls',
+                'extensions:xlsx,xls',
+            ],
+        ]);
+
+        $path = $request->file('file')->store('imports');
+
+        $import = new SalesmanImport();
+        Excel::import($import, $path);
+        $rows = $import->rows;
+
+        return view(
+            $this->buildPage('import'),
+            compact('rows', 'path')
+        );
+    }
+
+    public function importStore(Request $request)
+    {
+        $request->validate([
+            'path' => [
+                'required',
+                'string',
+            ],
+        ]);
+
+        $import = new SalesmanImport();
+        Excel::import($import, $request->path);
+        $import->save();
+
+        Storage::delete($request->path);
+
+        return redirect()
+            ->route('salesman.index')
+            ->with(
+                'success',
+                'Data salesman berhasil diimport.'
+            );
+    }
+
+    public function downloadTemplate()
+    {
+        return Excel::download(
+            new SalesmanTemplateExport(),
+            'template-salesman.xlsx'
+        );
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(
+            new SalesmanExport(),
+            'data-salesman.xlsx'
+        );
+    }
+
+    public function exportPdf()
+    {
+        $salesmen = Salesman::query()
+            ->orderBy('kode_sales')
+            ->get();
+
+        $pdf = Pdf::loadView(
+            $this->buildPage('pdf'),
+            compact('salesmen')
+        );
+
+        return $pdf->download('data-salesman.pdf');
     }
 }
