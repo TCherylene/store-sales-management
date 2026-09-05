@@ -1,6 +1,5 @@
 <?php
 use App\Models\User;
-use App\Helpers\Localization;
 
 $breadcrumbs = [
     ['label' => "Daftar User", 'url' => route('user.index')],
