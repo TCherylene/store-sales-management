@@ -41,7 +41,7 @@
                             <th class="text-center">No</th>
                             <th class="text-left">Kode Sales</th>
                             <th class="text-left">Nama Sales</th>
-                            <th></th>
+                            <th>Status</th>
                         </tr>
                     </thead>
 
@@ -51,13 +51,22 @@
                                 <td class="text-center">
                                     {{ $index + 1 }}
                                 </td>
-
                                 <td>
                                     {{ $row['kode_sales'] ?? '-' }}
                                 </td>
-
                                 <td>
                                     {{ $row['nama_sales'] ?? '-' }}
+                                </td>
+                                <td class="{{ $row['background'] }}">
+                                    @forelse($row['errors'] as $error)
+                                        {{ $error }}
+                                    @empty
+                                        @if($row['exists'])
+                                            Duplikat
+                                        @else
+                                            Valid
+                                        @endif
+                                    @endforelse
                                 </td>
                             </tr>
                         @empty

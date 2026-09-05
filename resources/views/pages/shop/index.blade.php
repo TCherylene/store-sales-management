@@ -97,7 +97,7 @@ $buttons = [
 
         <div class="mt-4">
             @include('components.paging', [
-                'data' => $shops
+                'model' => $shops
             ])
         </div>
 

@@ -62,6 +62,13 @@
                                 <td class="text-right">
                                     {{ Helper::format_number($row['nominal_transaksi']) ?? '-' }}
                                 </td>
+                                <td class="{{ $row['background'] }}">
+                                    @forelse($row['errors'] as $error)
+                                        {{ $error }}
+                                    @empty
+                                        Valid
+                                    @endforelse
+                                </td>
                             </tr>
                         @empty
                             <tr>

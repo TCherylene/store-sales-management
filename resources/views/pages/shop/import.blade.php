@@ -61,6 +61,17 @@
                                 <td>
                                     {{ $row['area_sales'] ?? '-' }}
                                 </td>
+                                <td class="{{ $row['background'] }}">
+                                    @forelse($row['errors'] as $error)
+                                        {{ $error }}
+                                    @empty
+                                        @if($row['exists'])
+                                            Duplikat
+                                        @else
+                                            Valid
+                                        @endif
+                                    @endforelse
+                                </td>
                             </tr>
                         @empty
                             <tr>

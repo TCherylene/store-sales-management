@@ -15,23 +15,18 @@ class SalesRequest extends FormRequest
 
     public function rules(): array
     {
-        $kodeToko = $this->route('sale')?->kode_toko;
-
         return [
             'kode_toko' => [
                 'required',
                 'integer',
                 'exists:table_a,kode_toko_baru',
-                Rule::unique('table_b', 'kode_toko')
-                    ->ignore($kodeToko, 'kode_toko'),
             ],
 
             'nominal_transaksi' => [
                 'required',
                 'numeric',
                 'min:0',
-                'max:8',
-                'decimal:8,2',
+                'decimal:0,2',
             ],
         ];
     }

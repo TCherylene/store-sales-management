@@ -192,7 +192,7 @@ class ShopController extends Controller
         Storage::delete($request->path);
 
         return redirect()
-            ->route('store.index')
+            ->route('shop.index')
             ->with(
                 'success',
                 'Data Toko berhasil diimport.'
