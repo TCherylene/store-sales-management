@@ -6,7 +6,6 @@
 
 @theme {
     --font-*: initial;
-    --font-outfit: Outfit, sans-serif;
 
     --breakpoint-*: initial;
     --breakpoint-2xsm: 375px;
@@ -178,6 +177,12 @@
     --z-index-999999: 999999;
 }
 
+@layer base {
+	body {
+		@apply relative font-normal z-1 bg-gray-50;
+	}
+}
+
 .sidebar:hover {
     width: 290px;
 }
@@ -214,23 +219,23 @@
 }
 
 @utility menu-item-active {
-    @apply bg-brand-50 text-brand-primary dark:bg-brand-500/[0.12] dark:text-brand-400;
+    @apply bg-brand-50 text-brand-primary font-medium;
 }
 
 @utility menu-item-inactive {
-    @apply text-gray-100 hover:bg-gray-100 hover:text-brand-primary group-hover:text-gray-700 dark:text-gray-300 dark:hover:bg-white/5 dark:hover:text-gray-300;
+    @apply text-gray-100 hover:bg-gray-100 hover:text-brand-primary group-hover:text-gray-700;
 }
 
 @utility menu-item-icon {
-    @apply text-gray-500 group-hover:text-gray-700 dark:text-gray-400;
+    @apply text-gray-500 group-hover:text-gray-700;
 }
 
 @utility menu-item-icon-active {
-    @apply text-brand-primary dark:text-brand-300;
+    @apply text-brand-primary;
 }
 
 @utility menu-item-icon-inactive {
-    @apply text-gray-400 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300;
+    @apply text-gray-400 group-hover:text-gray-700;
 }
 
 @utility menu-item-arrow {
@@ -238,11 +243,11 @@
 }
 
 @utility menu-item-arrow-active {
-    @apply rotate-180 text-brand-primary dark:text-brand-400;
+    @apply rotate-180 text-brand-primary;
 }
 
 @utility menu-item-arrow-inactive {
-    @apply text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300;
+    @apply text-gray-500 group-hover:text-gray-700;
 }
 
 @utility menu-dropdown-item {
@@ -250,11 +255,11 @@
 }
 
 @utility menu-dropdown-item-active {
-    @apply bg-brand-50 text-brand-primary dark:bg-brand-500/[0.12] dark:text-brand-400;
+    @apply bg-brand-50 text-brand-primary;
 }
 
 @utility menu-dropdown-item-inactive {
-    @apply text-gray-100 hover:bg-gray-100 hover:text-brand-primary dark:text-gray-300 dark:hover:bg-white/5;
+    @apply text-gray-100 hover:bg-gray-100 hover:text-brand-primary;
 }
 
 @utility menu-dropdown-item {
@@ -262,35 +267,70 @@
 }
 
 @utility menu-dropdown-item-active {
-    @apply bg-brand-50 text-brand-primary dark:bg-brand-500/[0.12] dark:text-brand-400;
+    @apply bg-brand-50 text-brand-primary;
 }
 
 @utility menu-dropdown-item-inactive {
-    @apply text-gray-100 hover:bg-gray-100 hover:text-brand-primary dark:text-gray-300 dark:hover:bg-white/5;
+    @apply text-gray-100 hover:bg-gray-100 hover:text-brand-primary;
 }
 
 @utility menu-dropdown-badge {
-    @apply text-success-600 dark:text-success-500 block rounded-full px-2.5 py-0.5 text-xs font-medium uppercase;
+    @apply text-success-600 block rounded-full px-2.5 py-0.5 text-xs font-medium uppercase;
 }
 
 @utility menu-dropdown-badge-active {
-    @apply bg-success-100 dark:bg-success-500/20;
+    @apply bg-success-100;
 }
 
 @utility menu-dropdown-badge-inactive {
-    @apply bg-success-50 group-hover:bg-success-100 dark:bg-success-500/15 dark:group-hover:bg-success-500/20;
+    @apply bg-success-50 group-hover:bg-success-100;
 }
 
 @utility menu-dropdown-badge-pro {
-    @apply text-brand-600 dark:text-brand-primary block rounded-full px-2.5 py-0.5 text-xs font-medium uppercase;
+    @apply text-brand-600 block rounded-full px-2.5 py-0.5 text-xs font-medium uppercase;
 }
 
 @utility menu-dropdown-badge-pro-active {
-    @apply bg-brand-100 dark:bg-brand-500/20;
+    @apply bg-brand-100;
 }
 
 @utility menu-dropdown-badge-pro-inactive {
-    @apply bg-brand-50 group-hover:bg-brand-100 dark:bg-brand-500/15 dark:group-hover:bg-brand-500/20;
+    @apply bg-brand-50 group-hover:bg-brand-100;
+}
+
+.font-medium{
+    font-weight: 700;
+}
+
+.sidebar:hover {
+    width: 290px;
+}
+.sidebar:hover .logo {
+    display: block;
+}
+.sidebar:hover .logo-icon {
+    display: none;
+}
+.sidebar:hover .sidebar-header {
+    justify-content: space-between;
+}
+.sidebar:hover .menu-group-title {
+    display: block;
+}
+.sidebar:hover .menu-group-icon {
+    display: none;
+}
+
+.sidebar:hover .menu-item-text {
+    display: inline;
+}
+
+.sidebar:hover .menu-item-arrow {
+    display: block;
+}
+
+.sidebar:hover .menu-dropdown {
+    display: flex;
 }
 
 @utility no-scrollbar {
@@ -300,4 +340,30 @@
     }
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+}
+
+@utility link {
+    @apply text-primary hover:underline;
+}
+
+@layer components {
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    table.table {
+        min-width: 100%;
+    }
+
+    table thead {
+        @apply bg-gray-50 text-gray-700;
+    }
+
+    table thead tr th {
+        @apply py-3 px-1 align-middle;
+    }
+
+    table tbody tr td {
+        @apply py-2 px-1 border-b border-gray-300;
+    }
 }
