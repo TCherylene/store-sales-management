@@ -36,7 +36,7 @@
         </select>
     @else
             <div class="relative {{ $class ?? "w-full" }}"">
-                <input type=" {{ $type }}" name="{{ $name }}" placeholder="{{ $placeholder }}" @required($required)
+                <input type="{{ $type }}" name="{{ $name }}" placeholder="{{ $placeholder }}" @required($required)
                 value="{{ $value }}" class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 h-11
                     rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800
                     placeholder:text-gray-400 focus:ring-3 focus:outline-hidden w-full
