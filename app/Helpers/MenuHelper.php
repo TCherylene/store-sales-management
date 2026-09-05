@@ -41,16 +41,16 @@ class MenuHelper
                 'ability' => 'user'
             ],
             [
-                'icon' => 'shop',
-                'name' => 'Toko',
-                'path' => 'shop.index',
-                'ability' => 'shop'
-            ],
-            [
                 'icon' => 'users',
                 'name' => 'Salesman',
                 'path' => 'salesman.index',
                 'ability' => 'salesman',
+            ],
+            [
+                'icon' => 'shop',
+                'name' => 'Toko',
+                'path' => 'shop.index',
+                'ability' => 'shop'
             ],
         ];
     }

@@ -43,6 +43,12 @@ Route::middleware('auth')->group(function () {
         ->name('shop.')
         ->group(function () {
             Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{shop}/edit', 'edit')->name('edit');
+            Route::get('/{shop}', 'show')->name('show');
+            Route::put('/{shop}', 'update')->name('update');
+            Route::delete('/{shop}', 'destroy')->name('destroy');
         });
 
     Route::controller(SalesmanController::class)
@@ -50,6 +56,12 @@ Route::middleware('auth')->group(function () {
         ->name('salesman.')
         ->group(function () {
             Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{salesman}/edit', 'edit')->name('edit');
+            Route::get('/{salesman}', 'show')->name('show');
+            Route::put('/{salesman}', 'update')->name('update');
+            Route::delete('/{salesman}', 'destroy')->name('destroy');
         });
 
     Route::controller(SalesController::class)
@@ -57,5 +69,11 @@ Route::middleware('auth')->group(function () {
         ->name('sales.')
         ->group(function () {
             Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{sale}/edit', 'edit')->name('edit');
+            Route::get('/{sale}', 'show')->name('show');
+            Route::put('/{sale}', 'update')->name('update');
+            Route::delete('/{sale}', 'destroy')->name('destroy');
         });
 });
