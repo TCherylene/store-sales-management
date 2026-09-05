@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function show()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return redirect()->route('home');
         }
         return view('pages.auth.login');
@@ -28,6 +28,10 @@ class AuthController extends Controller
         $user = User::where('username', $request->username)->first();
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
+            return back()->withErrors(['username' => 'Login gagal']);
+        }
+
+        if ($user->opt_status != User::OPT_STATUS_ACTIVE) {
             return back()->withErrors(['username' => 'Login gagal']);
         }
 

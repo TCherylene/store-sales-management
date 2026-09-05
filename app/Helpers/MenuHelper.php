@@ -27,7 +27,42 @@ class MenuHelper
                 'name' => "Dashboard",
                 'path' => 'dashboard',
                 'ability' => 'dashboard',
-            ]
+            ],
+        ];
+    }
+
+    public static function getMasterItems()
+    {
+        return [
+            [
+                'icon' => 'user',
+                'name' => 'User',
+                'path' => 'user.index',
+                'ability' => 'user'
+            ],
+            [
+                'icon' => 'shop',
+                'name' => 'Toko',
+                'path' => 'shop.index',
+                'ability' => 'shop'
+            ],
+            [
+                'icon' => 'users',
+                'name' => 'Salesman',
+                'path' => 'salesman.index',
+                'ability' => 'salesman',
+            ],
+        ];
+    }
+
+    public static function getTransactionItems(){
+        return [
+            [
+                'icon' => 'receipt',
+                'name' => 'Penjualan',
+                'path' => 'sales.index',
+                'ability' => 'sales',
+            ],
         ];
     }
 
@@ -38,6 +73,14 @@ class MenuHelper
             [
                 'title' => 'Dashboard',
                 'items' => self::getDashboardItems(),
+            ],
+            [
+                'title' => 'Master',
+                'items' => self::getMasterItems(),
+            ],
+            [
+                'title' => 'Transaksi',
+                'items' => self::getTransactionItems(),
             ],
         ];
     }
